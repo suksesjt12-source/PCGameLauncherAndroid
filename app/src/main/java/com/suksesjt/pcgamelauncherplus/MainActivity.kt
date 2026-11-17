@@ -332,7 +332,6 @@ class MainActivity : AppCompatActivity() {
                     throw IOException("Lokasi EXE tidak cocok dengan drive Download emulator.")
                 }
                 val destinationFile = File(Environment.getExternalStorageDirectory(), relativePath).canonicalFile
-                if (!destinationFile.isFile) throw IOException("File hasil salinan tidak ditemukan.")
                 runOnUiThread {
                     val existing = loadGames().filterNot { it.sourceUri == sourceUri.toString() }
                     val updated = existing + GameEntry(
