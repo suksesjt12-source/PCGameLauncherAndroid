@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity() {
     private var updatingRuntimeSpinner = false
     private var updatingContainerSpinner = false
     private var pendingImportUri: Uri? = null
+    private var pendingImportRuntimePackage: String = ""
+    private var pendingImportContainerId: Int = 0
 
     private val filePicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri != null) addGame(uri)
@@ -75,8 +77,12 @@ class MainActivity : AppCompatActivity() {
             )
             prefs.edit().putString("downloads_tree_uri", treeUri.toString()).apply()
             val source = pendingImportUri
+            val runtime = pendingImportRuntimePackage
+            val containerId = pendingImportContainerId
             pendingImportUri = null
-            if (source != null) copyGameIntoLauncherFolder(source)
+            pendingImportRuntimePackage = ""
+            pendingImportContainerId = 0
+            if (source != null) copyGameIntoLauncherFolder(source, runtime, containerId)
         } catch (_: SecurityException) {
             pendingImportUri = null
             toast("Aplikasi tidak mendapat izin tulis ke folder Download.")
@@ -247,20 +253,20 @@ class MainActivity : AppCompatActivity() {
         val treeUri = prefs.getString("downloads_tree_uri", null)?.let(Uri::parse)
         if (treeUri == null) {
             pendingImportUri = uri
+            pendingImportRuntimePackage = selectedRuntimePackage()
+            pendingImportContainerId = selectedContainerId()
             downloadsFolderPicker.launch(null)
             return
         }
-        copyGameIntoLauncherFolder(uri)
+        copyGameIntoLauncherFolder(uri, selectedRuntimePackage(), selectedContainerId())
     }
 
-    private fun copyGameIntoLauncherFolder(sourceUri: Uri) {
+    private fun copyGameIntoLauncherFolder(sourceUri: Uri, runtimePackage: String, containerId: Int) {
         val name = queryDisplayName(sourceUri) ?: "Game.exe"
         if (!name.endsWith(".exe", ignoreCase = true)) {
             toast("Hanya file .exe yang dapat ditambahkan.")
             return
         }
-        val runtimePackage = selectedRuntimePackage()
-        val containerId = selectedContainerId()
         containerStatus.text = "Menyalin $name ke Download/PCGameLauncher..."
         ioExecutor.execute {
             try {
@@ -488,7 +494,7 @@ class MainActivity : AppCompatActivity() {
                             toast("Pilih emulator dan container terlebih dahulu.")
                             return@setOnClickListener
                         }
-                        copyGameIntoLauncherFolder(Uri.parse(currentGame.sourceUri))
+                        copyGameIntoLauncherFolder(Uri.parse(currentGame.sourceUri), selectedRuntime, chosenContainer)
                     } else {
                         launchGame(currentGame.copy(runtimePackage = selectedRuntime, containerId = chosenContainer), chosenQuery)
                     }
