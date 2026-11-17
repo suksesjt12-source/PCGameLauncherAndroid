@@ -1,0 +1,7 @@
+<resources>
+    <color name="launcher_background">#101318</color>
+    <color name="launcher_surface">#1B222C</color>
+    <color name="launcher_primary">#72A7FF</color>
+    <color name="launcher_text">#F2F5FA</color>
+    <color name="launcher_muted">#AAB5C5</color>
+</resources>
