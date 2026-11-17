@@ -13,6 +13,8 @@
     <TextView android:id="@+id/runtimeStatus" android:layout_width="match_parent"
         android:layout_height="wrap_content" android:layout_marginTop="8dp"
         android:text="Runtime: belum dipilih" android:textColor="@color/launcher_muted" android:textSize="14sp" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="PILIH EMULATOR UTAMA" android:textColor="@color/launcher_muted" android:textSize="11sp" android:textStyle="bold" />
+    <Spinner android:id="@+id/runtimeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" />
     <com.google.android.material.button.MaterialButton android:id="@+id/addGameButton"
         android:layout_width="match_parent" android:layout_height="wrap_content"
         android:layout_marginTop="20dp" android:text="Tambah game (.exe)" app:cornerRadius="14dp" />
