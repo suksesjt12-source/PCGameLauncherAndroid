@@ -245,6 +245,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addGame(uri: Uri) {
+        try {
+            contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        } catch (_: SecurityException) {
+            toast("Izin file tidak bisa disimpan. Pilih sumber file lain atau salin ulang saat dibutuhkan.")
+        }
         val name = queryDisplayName(uri) ?: "Game.exe"
         if (!name.endsWith(".exe", ignoreCase = true)) {
             toast("Pilih file dengan ekstensi .exe")
