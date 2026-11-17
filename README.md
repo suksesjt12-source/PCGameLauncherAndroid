@@ -24,10 +24,11 @@ Versi Winlator resmi, Frost, dan mod lain tanpa Launcher Bridge hanya dapat dibu
 1. Bangun dan pasang APK Winlator Mali+ terbaru dari repository WinlatorMaliPlus yang sudah memiliki Launcher Bridge.
 2. Buka Winlator Mali+ sekurangnya sekali, pastikan image filesystem siap, lalu buat satu atau beberapa container.
 3. Buka PC Game Launcher Plus, pilih emulator dan container utama.
-4. Tambahkan file `.exe`. Saat diminta, pilih folder **Download** pada penyimpanan internal. Launcher membuat subfolder `PCGameLauncher` dan menyalin file ke sana.
+4. Untuk game sederhana, pilih satu file `.exe`; launcher menyalinnya ke `Download/PCGameLauncher`.
+5. Untuk game multi-file, salin dahulu seluruh folder instalasi ke `Download/PCGameLauncher` dengan struktur folder tetap utuh. Lalu pilih file `.exe` langsung dari folder itu. Launcher akan memakai path asli agar DLL dan file data di sekitarnya tetap dapat ditemukan.
+6. Di kartu game, pilih emulator serta container tujuan, lalu tekan **Mainkan**.
 
-
-Game harus mempunyai semua file pendukungnya (misalnya DLL dan folder data) dalam folder yang sama atau lokasi yang dapat diakses melalui drive container. Menyalin satu file EXE saja tidak otomatis menyalin seluruh folder instalasi.
+Bila file `.exe` dipilih dari lokasi lain di luar folder tersebut, launcher menyalin EXE saja. File DLL, arsip, atau aset lain tidak ikut tersalin otomatis.
 
 ## Batasan
 - Launcher bukan mesin emulasi dan tidak menyertakan Wine, Box64, FEX, DXVK, atau driver GPU.
