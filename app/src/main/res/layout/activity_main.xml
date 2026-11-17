@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/launcher_background"
+    android:padding="20dp">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="PC GAME LAUNCHER" android:textColor="@color/launcher_muted"
+        android:textSize="12sp" android:textStyle="bold" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="6dp" android:text="Library"
+        android:textColor="@color/launcher_text" android:textSize="30sp" android:textStyle="bold" />
+    <TextView android:id="@+id/runtimeStatus" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="8dp"
+        android:text="Runtime: belum dipilih" android:textColor="@color/launcher_muted" android:textSize="14sp" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/addGameButton"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" android:text="Tambah game (.exe)" app:cornerRadius="14dp" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/runtimeButton"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" android:text="Buka runtime" app:cornerRadius="14dp" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="24dp" android:text="GAME TERSIMPAN"
+        android:textColor="@color/launcher_muted" android:textSize="12sp" android:textStyle="bold" />
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:layout_marginTop="10dp" android:fillViewport="true">
+        <LinearLayout android:id="@+id/gameList" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical" />
+    </ScrollView>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Launcher ini mengelola file dan membuka runtime eksternal. Bukan emulator Windows."
+        android:textColor="@color/launcher_muted" android:textSize="11sp"
+        android:gravity="center" android:paddingTop="12dp" />
+</LinearLayout>
