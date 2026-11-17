@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.PCGameLauncherPlus" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/launcher_primary</item>
+        <item name="android:colorAccent">@color/launcher_primary</item>
+        <item name="android:statusBarColor">@color/launcher_background</item>
+        <item name="android:navigationBarColor">@color/launcher_background</item>
+        <item name="android:windowBackground">@color/launcher_background</item>
+    </style>
+</resources>
