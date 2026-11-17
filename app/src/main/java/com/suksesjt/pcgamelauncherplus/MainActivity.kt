@@ -255,6 +255,23 @@ class MainActivity : AppCompatActivity() {
             toast("Pilih file dengan ekstensi .exe")
             return
         }
+        val sharedPath = getSharedDownloadPath(uri)
+        if (sharedPath != null) {
+            val entries = loadGames().filterNot { it.sourceUri == uri.toString() }.toMutableList()
+            entries.add(
+                GameEntry(
+                    name = name,
+                    sourceUri = uri.toString(),
+                    runtimePackage = selectedRuntimePackage(),
+                    containerId = selectedContainerId(),
+                    exePath = sharedPath
+                )
+            )
+            saveGames(entries)
+            renderLibrary()
+            toast("EXE ditambahkan dari folder game. File pendamping tetap di tempatnya.")
+            return
+        }
         val treeUri = prefs.getString("downloads_tree_uri", null)?.let(Uri::parse)
         if (treeUri == null) {
             pendingImportUri = uri
@@ -264,6 +281,19 @@ class MainActivity : AppCompatActivity() {
             return
         }
         copyGameIntoLauncherFolder(uri, selectedRuntimePackage(), selectedContainerId())
+    }
+
+    private fun getSharedDownloadPath(uri: Uri): String? {
+        return try {
+            if (!DocumentsContract.isDocumentUri(this, uri)) return null
+            val documentId = DocumentsContract.getDocumentId(uri)
+            val prefix = "primary:Download/PCGameLauncher/"
+            if (!documentId.startsWith(prefix)) return null
+            val relativePath = documentId.removePrefix("primary:")
+            File(Environment.getExternalStorageDirectory(), relativePath).absolutePath
+        } catch (_: Exception) {
+            null
+        }
     }
 
     private fun copyGameIntoLauncherFolder(sourceUri: Uri, runtimePackage: String, containerId: Int) {
