@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 runtimes.add(RuntimeApp(label, info.packageName))
             }
         }
-        runtimes.distinctBy { it.packageName }.sortBy { it.label.lowercase() }
+        runtimes.sortBy { it.label.lowercase() }
         val labels = mutableListOf("Pilih emulator") + runtimes.map { "${it.label}  (${it.packageName})" }
         updatingSpinner = true
         runtimeSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, labels)
