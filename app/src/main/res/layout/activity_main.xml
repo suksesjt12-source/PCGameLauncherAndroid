@@ -13,17 +13,28 @@
     <TextView android:id="@+id/runtimeStatus" android:layout_width="match_parent"
         android:layout_height="wrap_content" android:layout_marginTop="8dp"
         android:text="Runtime: belum dipilih" android:textColor="@color/launcher_muted" android:textSize="14sp" />
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="PILIH EMULATOR UTAMA" android:textColor="@color/launcher_muted" android:textSize="11sp" android:textStyle="bold" />
-    <Spinner android:id="@+id/runtimeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="14dp" android:text="EMULATOR UTAMA"
+        android:textColor="@color/launcher_muted" android:textSize="11sp" android:textStyle="bold" />
+    <Spinner android:id="@+id/runtimeSpinner" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="4dp" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" android:text="CONTAINER DEFAULT"
+        android:textColor="@color/launcher_muted" android:textSize="11sp" android:textStyle="bold" />
+    <Spinner android:id="@+id/containerSpinner" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="4dp" />
+    <TextView android:id="@+id/containerStatus" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="6dp"
+        android:text="Container: belum dipilih" android:textColor="@color/launcher_muted" android:textSize="11sp" />
     <com.google.android.material.button.MaterialButton android:id="@+id/addGameButton"
         android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" android:text="Tambah game (.exe)" app:cornerRadius="14dp" />
+        android:layout_marginTop="16dp" android:text="Tambah game (.exe)" app:cornerRadius="14dp" />
     <com.google.android.material.button.MaterialButton android:id="@+id/runtimeButton"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" android:text="Buka runtime" app:cornerRadius="14dp" />
+        android:layout_marginTop="6dp" android:text="Buka emulator" app:cornerRadius="14dp" />
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:layout_marginTop="24dp" android:text="GAME TERSIMPAN"
+        android:layout_marginTop="18dp" android:text="GAME TERSIMPAN"
         android:textColor="@color/launcher_muted" android:textSize="12sp" android:textStyle="bold" />
     <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
         android:layout_weight="1" android:layout_marginTop="10dp" android:fillViewport="true">
@@ -31,7 +42,7 @@
             android:layout_height="wrap_content" android:orientation="vertical" />
     </ScrollView>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="Launcher ini mengelola file dan membuka runtime eksternal. Bukan emulator Windows."
+        android:text="Peluncuran EXE langsung memerlukan Winlator Mali+ dengan Launcher Bridge. Game disalin ke Download/PCGameLauncher."
         android:textColor="@color/launcher_muted" android:textSize="11sp"
         android:gravity="center" android:paddingTop="12dp" />
 </LinearLayout>
